@@ -1,7 +1,7 @@
 <template>
   <div id="app">
    <ul>
-     <li class="item" v-for="item in items">
+     <li class="item" v-for="item in items" :key="item">
        <h3>id:{{item.id}}</h3>
        <p>age:{{item.age}}</p>
      </li>
@@ -32,17 +32,13 @@ export default {
     this.items = itemsList;
 
     setInterval(function(){
-      var position = Math.floor(Math.random()*this.length)
+      var position = Math.floor(Math.random()*(this.length+1))
       itemsList.forEach((item)=>{
         item.age++
-
       })
       console.log(position)
       itemList.insert(position,this.id)  
-
       itemList.removeFirstAgeTen() 
-
-    
       itemsList = itemList.getAllItem()
       this.items = itemsList;
       this.id++;
